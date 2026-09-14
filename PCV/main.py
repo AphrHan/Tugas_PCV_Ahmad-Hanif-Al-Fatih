@@ -47,12 +47,6 @@ def read_image(path):
 
     return image
 
-
-# ==========================================
-# TUGAS 1
-# Membaca dan menampilkan satu foto
-# ==========================================
-
 def tugas_1():
     print("\n========== TUGAS 1 ==========")
 
@@ -83,12 +77,6 @@ def tugas_1():
     plt.tight_layout()
     plt.show()
 
-
-# ==========================================
-# TUGAS 2
-# Shape, dtype, min, max, rata-rata
-# ==========================================
-
 def tugas_2():
     print("\n========== TUGAS 2 ==========")
 
@@ -110,12 +98,6 @@ def tugas_2():
         print("Nilai max  :", gray.max())
         print("Rata-rata  :", gray.mean())
 
-
-# ==========================================
-# TUGAS 3
-# Mencetak potongan 8 x 8 piksel
-# ==========================================
-
 def tugas_3():
 
     print("\n========== TUGAS 3 ==========")
@@ -130,8 +112,7 @@ def tugas_3():
 
     if image is None:
         return
-
-    # Ubah menjadi grayscale
+    
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
     height, width = gray.shape
@@ -140,17 +121,11 @@ def tugas_3():
     print("Height :", height)
     print("Width  :", width)
 
-    # ======================================
-    # Potongan 8 x 8 dari area gelap
-    # ======================================
-
-    # Cari koordinat piksel paling gelap
     min_y, min_x = np.unravel_index(
         np.argmin(gray),
         gray.shape
     )
 
-    # Pastikan koordinat tidak keluar batas
     dark_y = min(max(min_y - 4, 0), height - 8)
     dark_x = min(max(min_x - 4, 0), width - 8)
 
@@ -158,10 +133,6 @@ def tugas_3():
         dark_y:dark_y + 8,
         dark_x:dark_x + 8
     ]
-
-    # ======================================
-    # Potongan 8 x 8 dari area terang
-    # ======================================
 
     max_y, max_x = np.unravel_index(
         np.argmax(gray),
@@ -175,10 +146,6 @@ def tugas_3():
         bright_y:bright_y + 8,
         bright_x:bright_x + 8
     ]
-
-    # ======================================
-    # PRINT
-    # ======================================
 
     print("\nPotongan 8 x 8 AREA GELAP:")
     print(dark_patch)
@@ -200,11 +167,6 @@ def tugas_3():
         bright_patch.max()
     )
 
-
-# ==========================================
-# TUGAS 4
-# Ukuran data mentah dan rasio kompresi
-# ==========================================
 
 def tugas_4():
 
@@ -259,11 +221,6 @@ def tugas_4():
         f"\nJadi rasio kompresinya sekitar "
         f"{compression_ratio:.2f}:1"
     )
-
-
-# ==========================================
-# PROGRAM UTAMA
-# ==========================================
 
 def main():
 
